@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var gutil = require('gulp-util');
+var mainBowerFiles = require('main-bower-files');
 
 // load plugins
 var $ = require('gulp-load-plugins')();
@@ -58,8 +59,9 @@ gulp.task('images', function () {
 
 gulp.task('fonts', function () {
     var streamqueue = require('streamqueue');
+
     return streamqueue({objectMode: true},
-        $.mainBowerFiles(),
+        gulp.src(mainBowerFiles()),
         gulp.src('app/fonts/**/*')
     )
         .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
@@ -88,7 +90,6 @@ gulp.task('serve', ['styles'], function () {
         open: false,
         hostnameSuffix: ".xip.io"
     }, function (err, bs) {
-        console.log(bs)
         // require('opn')(bs.options.urls.local);
         console.log('Started connect web server on ' + bs.options.url);
     });
