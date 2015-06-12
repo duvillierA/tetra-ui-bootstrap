@@ -1,0 +1,9 @@
+{
+  "name": "tetra-ui-bootstrap",
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.4",
+    "jquery": "~1.11.0"
+  },
+  "devDependencies": {}
+}
